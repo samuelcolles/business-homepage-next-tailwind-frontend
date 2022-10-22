@@ -8,7 +8,7 @@ interface Props {
   links: any[];
 }
 
-const EmployeeCard: NextPage<Props> = ({ name, title, photo, links }) => {
+const Employee: NextPage<Props> = ({ name, title, photo, links }) => {
   return (
     <div className="text-center">
       <div className="w-xl w-full">
@@ -23,4 +23,4 @@ const EmployeeCard: NextPage<Props> = ({ name, title, photo, links }) => {
   );
 };
 
-export default EmployeeCard;
+export default Employee;

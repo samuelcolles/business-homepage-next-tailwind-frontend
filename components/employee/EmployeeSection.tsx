@@ -1,6 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
-import EmployeeCard from "./EmployeeCard";
+import Employee from "./Employee";
 import { motion } from "framer-motion";
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
 	}[];
 }
 
-const EmployeeHighlight: NextPage<Props> = ({ employees }) => {
+const EmployeeSection: NextPage<Props> = ({ employees }) => {
 	return (
 		<motion.div
 			className="sm:p-0 p-3"
@@ -36,7 +36,7 @@ const EmployeeHighlight: NextPage<Props> = ({ employees }) => {
 				transition={{ ease: "easeOut" }}
 			>
 				{employees.map(item => (
-					<EmployeeCard
+					<Employee
 						key={item.id}
 						name={item.attributes.name}
 						title={item.attributes.title}
@@ -49,4 +49,4 @@ const EmployeeHighlight: NextPage<Props> = ({ employees }) => {
 	);
 };
 
-export default EmployeeHighlight;
+export default EmployeeSection;

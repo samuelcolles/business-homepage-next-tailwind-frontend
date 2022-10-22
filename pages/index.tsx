@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
+
 import NavBar from "../components/layout/NavBar";
 import Footer from "../components/layout/Footer";
-import Hero, { Variant } from "../components/elements/Hero";
-import CheckList from "../components/elements/CheckList";
-import EmployeeHighlight from "../components/elements/EmployeeHighlight";
-import ContactForm from "../components/elements/ContactForm";
+
+import HeroSection from "../components/hero/HeroSection";
+import CheckListSection from "../components/checklist/CheckListSection";
+import EmployeeSection from "../components/employee/EmployeeSection";
+import ContactForm from "../components/ContactForm";
 
 interface Props {
   siteInfo: {
@@ -37,45 +39,10 @@ const Home: NextPage<Props> = ({
   return (
     <div className="flex flex-col h-full">
       <NavBar businessName={businessName} />
-      {heroes ? (
-        heroes.map((item, index) => (
-          <Hero
-            key={item.id}
-            variant={
-              index === 0
-                ? Variant.primary
-                : index % 2 === 1
-                  ? Variant.secondary
-                  : Variant.tertiary
-            }
-            heading={item.attributes.heading}
-            subHeading={item.attributes.subHeading}
-            text={item.attributes.text}
-            photo={item.attributes.photo}
-            button={item.attributes.button}
-          />
-        ))
-      ) : (
-        <></>
-      )}
-      {checkLists ? (
-        checkLists.map(item => (
-          <CheckList
-            key={item.id}
-            heading={item.attributes.heading}
-            list={item.attributes.list}
-            icon={item.attributes.icon}
-          />
-        ))
-      ) : (
-        <></>
-      )}
-      {employees ? <EmployeeHighlight employees={employees} /> : <></>}
-      {siteInfo.contactEmail ? (
-        <ContactForm contactEmail={siteInfo.contactEmail} />
-      ) : (
-        <></>
-      )}
+      {heroes ? (<HeroSection heroes={heroes} />) : (<></>)}
+      {checkLists ? (<CheckListSection checkLists={checkLists} />) : (<></>)}
+      {employees ? <EmployeeSection employees={employees} /> : <></>}
+      {siteInfo.contactEmail ? (<ContactForm contactEmail={siteInfo.contactEmail} />) : (<></>)}
       <Footer shares={shares} copyRight={copyRight} />
     </div>
   );
