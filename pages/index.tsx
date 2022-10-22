@@ -45,8 +45,8 @@ const Home: NextPage<Props> = ({
               index === 0
                 ? Variant.primary
                 : index % 2 === 1
-                ? Variant.secondary
-                : Variant.tertiary
+                  ? Variant.secondary
+                  : Variant.tertiary
             }
             heading={item.attributes.heading}
             subHeading={item.attributes.subHeading}

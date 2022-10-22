@@ -61,29 +61,29 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 				</div>
 
 				<form method="post" onSubmit={handleOnSubmit} className="sm:w-1/2" >
-					<p className="flex flex-col mb-4">
+					<div className="flex flex-col mb-4">
 						<div className="flex flex-row justify-between mb-2">
 							<label htmlFor="name">Name:</label>
 							{nameError ? <p>Please enter your name.</p> : <></>}
 						</div>
 						<input className="input-box" type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
-					</p>
-					<p className="flex flex-col mb-4">
+					</div>
+					<div className="flex flex-col mb-4">
 						<div className="flex flex-row justify-between mb-2" >
 							<label htmlFor="email">Email:</label>
 							{emailError ? <p>Please enter a valid email.</p> : <></>}
 						</div>
 
 						<input className="input-box" type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} />
-					</p>
-					<p className="flex flex-col mb-4">
+					</div>
+					<div className="flex flex-col mb-4">
 						<div className="flex flex-row justify-between mb-2">
 							<label htmlFor="message">Message:</label>
 							{messageError ? <p>Please enter a message.</p> : <></>}
 						</div>
 
 						<textarea className="input-box" name="message" value={message} onChange={e => setMessage(e.target.value)} />
-					</p>
+					</div>
 
 					<button className="btn">Send</button>
 
