@@ -9,7 +9,7 @@ const CheckListSection: NextPage<Props> = ({ checkLists }) => {
 	return <>
 		{checkLists.map((item, index) => (
 			<CheckList
-				id={"check-list-" + (index + 1)}
+				index={index}
 				key={item.id}
 				heading={item.attributes.heading}
 				list={item.attributes.list}

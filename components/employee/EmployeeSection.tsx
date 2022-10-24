@@ -37,12 +37,12 @@ const EmployeeSection: NextPage<Props> = ({ employees }) => {
 			viewport={{ once: true, amount: 0.3 }}
 		>
 			<motion.h2
-				className="text-teal-800 text-6xl text-center font-bold my-24"
+				className="text-teal-800 text-6xl text-center font-bold mb-16"
 				variants={animation}
 			>
 				Who We Are
 			</motion.h2>
-			<div className="sm:flex grid-cols-1  flex-row w-full justify-center gap-8 my-24">
+			<div className="sm:flex grid-cols-1  flex-row w-full justify-center gap-8 mb-16">
 				{employees.map(item => (
 					<Employee
 						key={item.id}

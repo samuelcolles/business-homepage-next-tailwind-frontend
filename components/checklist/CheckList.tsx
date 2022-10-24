@@ -7,7 +7,7 @@ interface Props {
 	heading: string;
 	icon: any;
 	list: any[];
-	id: string;
+	index: number;
 }
 
 const animation: Variants = {
@@ -22,11 +22,11 @@ const animation: Variants = {
 }
 
 
-const CheckList: NextPage<Props> = ({ heading, icon, list, id }) => {
+const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 	return (
 		<motion.div
-			id={id}
-			className="flex flex-col justify-center px-4"
+			id={"check-list-" + (index + 1).toString()}
+			className="flex flex-col justify-center sm:px-4 px-0 mb-16"
 			transition={{ staggerChildren: 0.1 }}
 			initial="offScreen"
 			whileInView="onScreen"

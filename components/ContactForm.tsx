@@ -54,7 +54,7 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 	return (
 		<div id="contact-form" className="flex flex-row justify-center px-4 xl:px-0 ">
 
-			<div className="max-w-screen-xl w-full flex flex-col sm:flex-row mb-24 gap-4 sm:px-0 px-4">
+			<div className="max-w-screen-xl w-full flex flex-col sm:flex-row mb-16 gap-4 sm:px-0 px-4">
 				<motion.div
 					className="sm:w-1/2"
 					initial={{ x: "-50%", opacity: 0 }}
@@ -100,7 +100,13 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 						<textarea className="input-box" name="message" value={message} onChange={e => setMessage(e.target.value)} />
 					</div>
 
-					<button className="btn">Send</button>
+					<motion.button
+						className="btn"
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+					>
+						Send
+					</motion.button>
 
 
 

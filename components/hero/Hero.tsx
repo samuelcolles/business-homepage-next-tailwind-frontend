@@ -18,7 +18,7 @@ interface Props {
   };
   photo: any;
   variant: Variant;
-  id: number;
+  index: number;
 }
 
 const Hero: NextPage<Props> = ({
@@ -28,44 +28,45 @@ const Hero: NextPage<Props> = ({
   button,
   photo,
   variant,
-  id
+  index,
 }) => {
 
   const isOdd = variant === Variant.primary || variant === Variant.tertiary
-  console.log(photo.data.attributes)
   return (
     <motion.div
       className={`flex gap-8 justify-start  ${isOdd
         ? "md:flex-row flex-col"
         : "md:flex-row-reverse flex-col"
         }`}
-      id={`hero-${id + 1}`}
+      id={`hero-${index + 1}`}
       initial={isOdd ? { x: 100, opacity: 0 } : { x: -100, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ ease: "easeOut" }}
     >
       {photo ?
-        <div className=" ">
+        <div className="md:w-5/12 w-full ">
           <img
             src={process.env.STRAPI_BACKEND_URL + photo.data.attributes.url}
             // className="sm:max-w-1/2 max-w-full w-full h-auto"
-            width={"600px"}
+            width={"100%"}
             height={"auto"}
           />
         </div> : <></>
       }
-      <div className="flex flex-col md:w-1/2 w-full justify-center md:px-0 px-3">
+      <div className="flex flex-col md:w-5/12 w-full justify-center md:px-0 px-3">
         <h2 className="sub-heading mb-3 text-center md:text-left">{heading}</h2>
         <h3 className="text-3xl mb-4  text-center md:text-left">{subHeading}</h3>
         <p className="text-lg">{text}</p>
         {button ?
-          <a
+          <motion.a
             href={button.url}
             className="btn self-center mt-8"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           >
             {button.label}
-          </a> : <></>
+          </motion.a> : <></>
         }
       </div>
     </motion.div>

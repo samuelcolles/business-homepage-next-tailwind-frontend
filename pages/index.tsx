@@ -8,6 +8,7 @@ import CheckListSection from "../components/checklist/CheckListSection";
 import EmployeeSection from "../components/employee/EmployeeSection";
 import ContactForm from "../components/ContactForm";
 import SiteHeader from "../components/SiteHeader";
+import SharesSection from "../components/SharesSection";
 
 interface Props {
   siteInfo: {
@@ -50,7 +51,8 @@ const Home: NextPage<Props> = ({
       {checkLists ? (<CheckListSection checkLists={checkLists} />) : (<></>)}
       {employees ? <EmployeeSection employees={employees} /> : <></>}
       {siteInfo.contactEmail ? (<ContactForm contactEmail={siteInfo.contactEmail} />) : (<></>)}
-      <Footer shares={shares} copyRight={copyRight} />
+      {shares && shares.length != 0 ? <SharesSection shares={shares} /> : <></>}
+      <Footer navLinks={navLinks} copyRight={copyRight} />
     </div>
   );
 };
@@ -65,7 +67,7 @@ export const getStaticProps = async () => {
   var siteInfo = await getDataItem("/api/site-info?populate=*");
   siteInfo = siteInfo.attributes;
 
-  var shares = await getDataItem("/api/share?populate=*&sort=id");
+  var shares = await getDataItem("/api/share?populate[0]=share&populate[1]=share.icon&sort=id");
   shares = shares.attributes.share;
 
   const heroes = await getDataItem("/api/heroes?populate=*&sort=id");
@@ -79,7 +81,7 @@ export const getStaticProps = async () => {
 
   var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
   siteHeader = siteHeader.attributes;
-  console.log(siteHeader);
+  console.log(shares);
 
   return {
     props: {

@@ -8,7 +8,7 @@ interface Props {
 
 const HeroSection: NextPage<Props> = ({ heroes }) => {
 	return (<div
-		className='flex flex-col gap-12'
+		className='flex flex-col gap-12 mb-16'
 	>
 
 		{heroes.map((item, index) => (
@@ -21,7 +21,7 @@ const HeroSection: NextPage<Props> = ({ heroes }) => {
 							? Variant.secondary
 							: Variant.tertiary
 				}
-				id={0}
+				index={index}
 				heading={item.attributes.heading}
 				subHeading={item.attributes.subHeading}
 				text={item.attributes.text}
