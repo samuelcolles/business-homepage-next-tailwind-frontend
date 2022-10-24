@@ -1,26 +1,42 @@
 import React from "react";
 import type { NextPage } from "next";
 import Link from "next/link";
+import { motion } from "framer-motion"
 
 interface Props {
-  businessName: string;
+	businessName: string;
+	navLinks: any[];
 }
 
-const NavBar: NextPage<Props> = ({ businessName }) => {
-  return (
-    <div className="bg-teal-800 flex justify-center">
-      <div className="max-w-screen-xl bg-teal-700 w-full py-6 justify-between flex flex-row content-end">
-        <h1 className="text-7xl font-bold">
-          {businessName ? businessName : "Place Holder"}
-        </h1>
-        <div className="flex flex-row gap-3 items-end">
-          <a href="#check-list-1">Home</a>
-          <Link href="#check-list-1" >Home</Link>
-          <p>About</p>
-        </div>
-      </div>
-    </div>
-  );
+const NavBar: NextPage<Props> = ({ businessName, navLinks }) => {
+	return (
+		<div className="bg-teal-800 text-white flex justify-center">
+			<div
+				className="max-w-screen-xl w-full py-6 px-4 xl:px-0 justify-between flex flex-row content-end"
+
+			>
+				<motion.h1 className="text-7xl font-bold font-quicksand">
+					{businessName ? businessName : "Place Holder"}
+				</motion.h1>
+				<div className="flex flex-row gap-3 items-end text-lg font-semibold">
+					{
+						navLinks && navLinks.length != 0 ?
+							navLinks.map((link, index) =>
+								<motion.div
+									key={index}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+								>
+									<Link href={link.url} >{link.label}</Link>
+								</motion.div>
+							) : <></>
+					}
+
+
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default NavBar;

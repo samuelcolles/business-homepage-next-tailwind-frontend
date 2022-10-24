@@ -8,6 +8,19 @@ body,
 #__next {
   height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Quicksand'), url(/fonts/Quicksand-VariableFont_wght.ttf) format('ttf');
+}
+
+.font-quicksand {
+  font-family: 'Quicksand', sans-serif;
 }
 
 .btn {

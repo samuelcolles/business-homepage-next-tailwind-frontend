@@ -52,13 +52,14 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 	}
 
 	return (
-		<div className="flex flex-row justify-center ">
+		<div id="contact-form" className="flex flex-row justify-center px-4 xl:px-0 ">
 
-			<div className="max-w-screen-xl w-full flex flex-col sm:flex-row mb-24 gap-4 px-4">
+			<div className="max-w-screen-xl w-full flex flex-col sm:flex-row mb-24 gap-4 sm:px-0 px-4">
 				<motion.div
 					className="sm:w-1/2"
-					initial={{ x: "-100%", opacity: 0 }}
+					initial={{ x: "-50%", opacity: 0 }}
 					whileInView={{ x: 0, opacity: 1 }}
+					viewport={{ once: true, amount: 0.3 }}
 					transition={{ ease: "easeOut" }}
 				>
 					<h2 className="text-center sm:text-left text-6xl font-bold color text-teal-900 mb-16">Contact Us</h2>
@@ -70,8 +71,9 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 					method="post"
 					onSubmit={handleOnSubmit}
 					className="sm:w-1/2"
-					initial={{ x: "100%", opacity: 0 }}
+					initial={{ x: "50%", opacity: 0 }}
 					whileInView={{ x: 0, opacity: 1 }}
+					viewport={{ once: true, amount: 0.3 }}
 					transition={{ ease: "easeOut" }}
 				>
 					<div className="flex flex-col mb-4">

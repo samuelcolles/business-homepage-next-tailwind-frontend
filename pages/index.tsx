@@ -7,6 +7,7 @@ import HeroSection from "../components/hero/HeroSection";
 import CheckListSection from "../components/checklist/CheckListSection";
 import EmployeeSection from "../components/employee/EmployeeSection";
 import ContactForm from "../components/ContactForm";
+import SiteHeader from "../components/SiteHeader";
 
 interface Props {
   siteInfo: {
@@ -15,6 +16,7 @@ interface Props {
     contactEmail: string;
     logo: {};
   };
+  siteHeader: any;
   shares: any[];
   heroes: any[];
   checkLists: {
@@ -26,19 +28,24 @@ interface Props {
     };
   }[];
   employees: any[];
+  navLinks: any[];
 }
 
 const Home: NextPage<Props> = ({
   siteInfo,
+  siteHeader,
   shares,
   heroes,
   checkLists,
   employees,
+  navLinks,
+
 }) => {
   const { businessName, copyRight } = siteInfo;
   return (
     <div className="flex flex-col h-full">
-      <NavBar businessName={businessName} />
+      <NavBar businessName={businessName} navLinks={navLinks} />
+      {siteHeader.image ? <SiteHeader siteHeader={siteHeader} /> : <></>}
       {heroes ? (<HeroSection heroes={heroes} />) : (<></>)}
       {checkLists ? (<CheckListSection checkLists={checkLists} />) : (<></>)}
       {employees ? <EmployeeSection employees={employees} /> : <></>}
@@ -67,13 +74,22 @@ export const getStaticProps = async () => {
 
   const employees = await getDataItem("/api/employees?populate=*&sort=id");
 
+  var navLinks = await getDataItem("/api/nav-link?populate=*&sort=id");
+  navLinks = navLinks.attributes.links
+
+  var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
+  siteHeader = siteHeader.attributes;
+  console.log(siteHeader);
+
   return {
     props: {
       siteInfo,
+      siteHeader,
       shares,
       heroes,
       checkLists,
       employees,
+      navLinks,
     },
   };
 };
