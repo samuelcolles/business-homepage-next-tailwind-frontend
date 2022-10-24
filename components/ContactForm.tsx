@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { NextPage } from "next";
+import { motion } from "framer-motion";
 
 interface Props {
 	contactEmail: string;
@@ -54,13 +55,25 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 		<div className="flex flex-row justify-center ">
 
 			<div className="max-w-screen-xl w-full flex flex-col sm:flex-row mb-24 gap-4 px-4">
-				<div className="sm:w-1/2">
+				<motion.div
+					className="sm:w-1/2"
+					initial={{ x: "-100%", opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ ease: "easeOut" }}
+				>
 					<h2 className="text-center sm:text-left text-6xl font-bold color text-teal-900 mb-16">Contact Us</h2>
 					<p>Don't hesitate to reach out to us with the contact sheet, or by the following email address.</p>
 
-				</div>
+				</motion.div>
 
-				<form method="post" onSubmit={handleOnSubmit} className="sm:w-1/2" >
+				<motion.form
+					method="post"
+					onSubmit={handleOnSubmit}
+					className="sm:w-1/2"
+					initial={{ x: "100%", opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ ease: "easeOut" }}
+				>
 					<div className="flex flex-col mb-4">
 						<div className="flex flex-row justify-between mb-2">
 							<label htmlFor="name">Name:</label>
@@ -89,7 +102,7 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 
 
 
-				</form>
+				</motion.form>
 			</div >
 		</div>
 	);

@@ -1,13 +1,24 @@
 import React from 'react'
 import type { NextPage } from "next";
 import Hero, { Variant } from "./Hero";
+import { motion } from "framer-motion";
 
 interface Props {
 	heroes: any[];
 }
 
 const HeroSection: NextPage<Props> = ({ heroes }) => {
-	return (<>
+	return (<motion.div
+		className='flex flex-col gap-12'
+		initial={{ opacity: 0 }}
+		whileInView={{
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2
+			}
+
+		}}
+	>
 
 		{heroes.map((item, index) => (
 			<Hero
@@ -26,7 +37,7 @@ const HeroSection: NextPage<Props> = ({ heroes }) => {
 				button={item.attributes.button}
 			/>
 		))}
-	</>
+	</motion.div>
 
 	)
 }

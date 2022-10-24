@@ -1,7 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
 import Employee from "./Employee";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
 	employees: {
@@ -15,26 +15,27 @@ interface Props {
 	}[];
 }
 
+const animation: Variants = {
+	offScreen: { y: 100, opacity: 0 },
+	onScreen: {
+		y: 0,
+		opacity: 1,
+		transform: "easeOut"
+	}
+}
+
 const EmployeeSection: NextPage<Props> = ({ employees }) => {
 	return (
 		<motion.div
-			className="sm:p-0 p-3"
+			className="sm:px-0 px-3"
 			initial={{ opacity: 0, y: 200 }}
 			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ ease: "easeOut", staggerChildren: 0.3 }}
+			transition={{ ease: "easeOut" }}
 		>
-			<motion.h2 className="text-teal-800 text-6xl text-center font-bold my-24"
-				initial={{ opacity: 0, y: 200 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				transition={{ ease: "easeOut" }}
-			>
+			<h2 className="text-teal-800 text-6xl text-center font-bold my-24">
 				Who We Are
-			</motion.h2>
-			<motion.div className="flex flex-row w-full justify-center gap-8 my-24"
-				whileInView={{ opacity: 1, y: 0 }}
-				initial={{ opacity: 0, y: 200 }}
-				transition={{ ease: "easeOut" }}
-			>
+			</h2>
+			<div className="flex flex-row w-full justify-center gap-8 my-24">
 				{employees.map(item => (
 					<Employee
 						key={item.id}
@@ -44,7 +45,7 @@ const EmployeeSection: NextPage<Props> = ({ employees }) => {
 						links={item.attributes.links}
 					/>
 				))}
-			</motion.div>
+			</div>
 		</motion.div>
 	);
 };

@@ -1,5 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
+import { motion } from "framer-motion";
+
 
 export enum Variant {
   primary = 0,
@@ -26,12 +28,18 @@ const Hero: NextPage<Props> = ({
   photo,
   variant,
 }) => {
+
+  const isOdd = variant === Variant.primary || variant === Variant.tertiary
   return (
-    <div
-      className={`flex gap-8 justify-start  ${variant === Variant.primary || variant === Variant.tertiary
+    <motion.div
+      className={`flex gap-8 justify-start  ${isOdd
         ? "md:flex-row flex-col"
         : "md:flex-row-reverse flex-col"
         }`}
+
+      initial={isOdd ? { x: "100%", opacity: 0 } : { x: "-100%", opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ ease: "easeOut" }}
     >
       {photo ? (
         <div className="md:max-w-1/2 max-w-full">
@@ -58,7 +66,7 @@ const Hero: NextPage<Props> = ({
           <></>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
