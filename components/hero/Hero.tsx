@@ -44,7 +44,7 @@ const Hero: NextPage<Props> = ({
       viewport={{ once: true, amount: 0.3 }}
       transition={{ ease: "easeOut" }}
     >
-      {photo ?
+      {photo && photo.data ?
         <div className="md:w-5/12 w-full ">
           <img
             src={process.env.STRAPI_BACKEND_URL + photo.data.attributes.url}

@@ -46,10 +46,10 @@ const Home: NextPage<Props> = ({
   return (
     <div className="flex flex-col h-full">
       <NavBar businessName={businessName} navLinks={navLinks} />
-      {siteHeader.image ? <SiteHeader siteHeader={siteHeader} /> : <></>}
+      {siteHeader && siteHeader.image ? <SiteHeader siteHeader={siteHeader} /> : <></>}
       {heroes ? (<HeroSection heroes={heroes} />) : (<></>)}
       {checkLists ? (<CheckListSection checkLists={checkLists} />) : (<></>)}
-      {employees ? <EmployeeSection employees={employees} /> : <></>}
+      {employees && employees.length > 0 ? <EmployeeSection employees={employees} /> : <></>}
       {siteInfo.contactEmail ? (<ContactForm contactEmail={siteInfo.contactEmail} />) : (<></>)}
       {shares && shares.length != 0 ? <SharesSection shares={shares} /> : <></>}
       <Footer navLinks={navLinks} copyRight={copyRight} />
@@ -65,10 +65,14 @@ const getDataItem = async (uri: string) => {
 
 export const getStaticProps = async () => {
   var siteInfo = await getDataItem("/api/site-info?populate=*");
-  siteInfo = siteInfo.attributes;
+  if (siteInfo) {
+    siteInfo = siteInfo.attributes;
+  } else {
+    siteInfo = { copyRight: "", businessName: "Place Holder" }
+  }
 
   var shares = await getDataItem("/api/share?populate[0]=share&populate[1]=share.icon&sort=id");
-  shares = shares.attributes.share;
+  if (shares) shares = shares.attributes.share;
 
   const heroes = await getDataItem("/api/heroes?populate=*&sort=id");
 
@@ -77,11 +81,10 @@ export const getStaticProps = async () => {
   const employees = await getDataItem("/api/employees?populate=*&sort=id");
 
   var navLinks = await getDataItem("/api/nav-link?populate=*&sort=id");
-  navLinks = navLinks.attributes.links
+  if (navLinks) navLinks = navLinks.attributes.links
 
   var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
-  siteHeader = siteHeader.attributes;
-  console.log(shares);
+  if (siteHeader) siteHeader = siteHeader.attributes;
 
   return {
     props: {
