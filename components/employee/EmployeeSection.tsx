@@ -11,6 +11,8 @@ interface Props {
 			title: string;
 			photo: any;
 			links: any[];
+			phoneNumber: string;
+			email: string;
 		};
 	}[];
 }
@@ -28,32 +30,37 @@ export const animation: Variants = {
 
 const EmployeeSection: NextPage<Props> = ({ employees }) => {
 	return (
-		<motion.div
-			id="employee-1"
-			className="sm:px-0 px-3"
-			initial="offScreen"
-			whileInView="onScreen"
-			transition={{ staggerChildren: 0.2 }}
-			viewport={{ once: true, amount: 0.3 }}
-		>
-			<motion.h2
-				className="text-teal-800 text-6xl text-center font-bold mb-16"
-				variants={animation}
+		<div className="flex justify-center">
+
+			<motion.div
+				id="employee-1"
+				className="sm:px-0 px-3 max-w-screen-xl w-full"
+				initial="offScreen"
+				whileInView="onScreen"
+				transition={{ staggerChildren: 0.2 }}
+				viewport={{ once: true, amount: 0.3 }}
 			>
-				Who We Are
-			</motion.h2>
-			<div className="sm:flex grid-cols-1  flex-row w-full justify-center gap-8 mb-16">
-				{employees.map(item => (
-					<Employee
-						key={item.id}
-						name={item.attributes.name}
-						title={item.attributes.title}
-						photo={item.attributes.photo}
-						links={item.attributes.links}
-					/>
-				))}
-			</div>
-		</motion.div>
+				<motion.h2
+					className="text-teal-800 text-6xl text-center font-bold mb-16"
+					variants={animation}
+				>
+					Who We Are
+				</motion.h2>
+				<div className="flex sm:flex-row flex-col w-full justify-around gap-8 mb-16">
+					{employees.map(item => (
+						<Employee
+							key={"employee" + item.id}
+							name={item.attributes.name}
+							title={item.attributes.title}
+							photo={item.attributes.photo}
+							links={item.attributes.links}
+							email={item.attributes.email}
+							phoneNumber={item.attributes.phoneNumber}
+						/>
+					))}
+				</div>
+			</motion.div>
+		</div>
 	);
 };
 

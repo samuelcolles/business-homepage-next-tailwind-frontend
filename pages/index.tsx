@@ -79,6 +79,7 @@ export const getStaticProps = async () => {
   const checkLists = await getDataItem("/api/check-lists?populate=*&sort=id");
 
   const employees = await getDataItem("/api/employees?populate=*&sort=id");
+  console.log(employees);
 
   var navLinks = await getDataItem("/api/nav-link?populate=*&sort=id");
   if (navLinks) navLinks = navLinks.attributes.links

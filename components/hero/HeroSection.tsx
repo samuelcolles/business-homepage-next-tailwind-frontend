@@ -8,12 +8,11 @@ interface Props {
 
 const HeroSection: NextPage<Props> = ({ heroes }) => {
 	return (<div
-		className='flex flex-col gap-12 mb-16'
+		className='flex flex-col gap-12 mb-16 w-full'
 	>
-
 		{heroes.map((item, index) => (
 			<Hero
-				key={item.id}
+				key={"hero" + item.id}
 				variant={
 					index === 0
 						? Variant.primary

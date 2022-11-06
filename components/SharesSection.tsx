@@ -14,7 +14,7 @@ const SharesSection: NextPage<Props> = ({ shares }) => {
 					href={item.url}
 					whileHover={{ scale: 1.2 }}
 					whileTap={{ scale: 0.9 }}
-
+					key={"share" + item.id}
 				>
 					<img
 						src={process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url}

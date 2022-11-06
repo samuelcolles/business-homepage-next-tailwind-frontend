@@ -17,7 +17,7 @@ const Footer: NextPage<Props> = ({ copyRight, navLinks }) => {
 						navLinks.map(item =>
 							<motion.a
 								href={item.url}
-								key={item.id}
+								key={"navLinks" + item.id}
 								whileHover={{ scale: 1.2 }}
 								whileTap={{ scale: 0.9 }}
 							>

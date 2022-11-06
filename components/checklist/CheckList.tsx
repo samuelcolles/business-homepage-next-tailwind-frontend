@@ -46,7 +46,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 					{list.map((item) =>
 						<motion.div
 							className="flex flex-row mb-2"
-							key={item.id}
+							key={"listItem" + item.id}
 							variants={animation}
 						>
 							{icon.data ? <img src={process.env.STRAPI_BACKEND_URL + icon.data.attributes.url} height={42} width={42}></img> :
