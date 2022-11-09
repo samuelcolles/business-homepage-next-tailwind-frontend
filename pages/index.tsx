@@ -9,6 +9,9 @@ import EmployeeSection from "../components/employee/EmployeeSection";
 import ContactForm from "../components/ContactForm";
 import SiteHeader from "../components/SiteHeader";
 import SharesSection from "../components/SharesSection";
+import MapLocation from "../components/MapLocation";
+import VideoHeader from "../components/VideoHeader";
+import ImageCardSection from "../components/imageCard/ImageCardSection";
 
 interface Props {
   siteInfo: {
@@ -30,6 +33,8 @@ interface Props {
   }[];
   employees: any[];
   navLinks: any[];
+  mapLocation: any;
+  imageCardGrids: any[];
 }
 
 const Home: NextPage<Props> = ({
@@ -38,8 +43,10 @@ const Home: NextPage<Props> = ({
   shares,
   heroes,
   checkLists,
+  imageCardGrids,
   employees,
   navLinks,
+  mapLocation,
 
 }) => {
   const { businessName, copyRight } = siteInfo;
@@ -47,10 +54,13 @@ const Home: NextPage<Props> = ({
     <div className="flex flex-col h-full">
       <NavBar businessName={businessName} navLinks={navLinks} />
       {siteHeader && siteHeader.image ? <SiteHeader siteHeader={siteHeader} /> : <></>}
-      {heroes ? (<HeroSection heroes={heroes} />) : (<></>)}
-      {checkLists ? (<CheckListSection checkLists={checkLists} />) : (<></>)}
+      {siteHeader && siteHeader.videoHeaderSRC ? <VideoHeader videoHeaderSRC={siteHeader.videoHeaderSRC} /> : <></>}
+      {heroes ? <HeroSection heroes={heroes} /> : <></>}
+      {checkLists ? <CheckListSection checkLists={checkLists} /> : <></>}
+      {imageCardGrids ? <ImageCardSection imageCardGrids={imageCardGrids} /> : <></>}
       {employees && employees.length > 0 ? <EmployeeSection employees={employees} /> : <></>}
-      {siteInfo.contactEmail ? (<ContactForm contactEmail={siteInfo.contactEmail} />) : (<></>)}
+      {mapLocation ? <MapLocation mapLocation={mapLocation} /> : <></>}
+      {siteInfo.contactEmail ? <ContactForm contactEmail={siteInfo.contactEmail} /> : <></>}
       {shares && shares.length != 0 ? <SharesSection shares={shares} /> : <></>}
       <Footer navLinks={navLinks} copyRight={copyRight} />
     </div>
@@ -76,16 +86,21 @@ export const getStaticProps = async () => {
 
   const heroes = await getDataItem("/api/heroes?populate=*&sort=id");
 
+  const mapLocation = await getDataItem("/api/map-location");
+
   const checkLists = await getDataItem("/api/check-lists?populate=*&sort=id");
 
+  const imageCardGrids = await getDataItem("/api/image-card-grids?populate[0]=cards&populate[1]=cards.image&sort=id")
+
   const employees = await getDataItem("/api/employees?populate=*&sort=id");
-  console.log(employees);
 
   var navLinks = await getDataItem("/api/nav-link?populate=*&sort=id");
   if (navLinks) navLinks = navLinks.attributes.links
 
   var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
   if (siteHeader) siteHeader = siteHeader.attributes;
+  console.log(mapLocation)
+
 
   return {
     props: {
@@ -96,6 +111,8 @@ export const getStaticProps = async () => {
       checkLists,
       employees,
       navLinks,
+      mapLocation,
+      imageCardGrids,
     },
   };
 };

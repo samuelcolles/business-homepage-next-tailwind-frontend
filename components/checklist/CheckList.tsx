@@ -1,7 +1,8 @@
 import React from "react";
 import { NextPage } from "next";
 import { AiFillCheckCircle } from "react-icons/ai";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 interface Props {
 	heading: string;
@@ -26,7 +27,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 	return (
 		<motion.div
 			id={"check-list-" + (index + 1).toString()}
-			className="flex flex-col justify-center sm:px-4 px-0 mb-16"
+			className="flex flex-col justify-center sm:px-4 px-0 mb-common"
 			transition={{ staggerChildren: 0.1 }}
 			initial="offScreen"
 			whileInView="onScreen"
@@ -34,7 +35,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 		>
 			{heading ?
 				<motion.h1
-					className="text-center heading mb-16"
+					className="text-center heading mb-common"
 					variants={animation}
 				>
 					{heading}

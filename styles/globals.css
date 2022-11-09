@@ -38,3 +38,10 @@ body,
 .sub-heading{
   @apply text-5xl font-bold text-teal-800;
 }
+.mb-common {
+  @apply mb-16;
+}
+
+.mt-common {
+  @apply mt-16;
+}

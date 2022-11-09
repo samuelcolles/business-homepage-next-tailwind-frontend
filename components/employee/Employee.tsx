@@ -18,13 +18,8 @@ const Employee: NextPage<Props> = ({ name, title, photo, links, phoneNumber, ema
       className="flex flex-col text-center w-full "
       variants={animation}
     >
-
-      {/* <img
-          src={process.env.STRAPI_BACKEND_URL + photo.data.attributes.url}
-          className="block w-full h-auto"
-        /> */}
       <div
-        className='h-96 max-w-[22rem] w-full bg-cover bg-center self-center '
+        className='h-96 max-w-[22rem] w-full bg-cover bg-center self-center rounded-md'
         style={{ backgroundImage: `url(${process.env.STRAPI_BACKEND_URL + photo.data.attributes.url})` }}
       >
 
