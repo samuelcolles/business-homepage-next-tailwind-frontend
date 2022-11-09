@@ -43,7 +43,7 @@ const MapLocation: NextPage<Props> = ({ mapLocation: { attributes: { src, header
 		}
 		{src && src.length > 0 ?
 			<iframe
-				className='w-full aspect-[16/9] max-w-screen-xl mt-common'
+				className='w-full md:aspect-[16/9] aspect-square mt-common'
 				src={src}
 				loading="lazy"
 			></iframe> : <></>

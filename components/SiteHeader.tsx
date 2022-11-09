@@ -34,7 +34,7 @@ const SiteHeader: NextPage<Props> = ({ siteHeader }) => {
 		>
 
 			<motion.h1
-				className='text-8xl font-bold text-white drop-shadow-lg'
+				className='sm:text-8xl text-4xl font-bold text-white drop-shadow-lg'
 				variants={animation}
 			>
 				{siteHeader.heading}

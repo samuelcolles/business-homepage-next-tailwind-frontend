@@ -26,7 +26,7 @@ const ImageCardGrid: NextPage<Props> = ({
 	cards
 }) => {
 	return <motion.div
-		className='text-center mb-common'
+		className='text-center mb-common px-4 xl:px-0'
 		transition={{ staggerChildren: 0.1 }}
 		initial="offScreen"
 		whileInView="onScreen"
@@ -45,7 +45,7 @@ const ImageCardGrid: NextPage<Props> = ({
 			{subheading}
 		</motion.h3>
 		<div className='flex justify-center text-left'>
-			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-screen-xl w-full mt-common'>
+			<div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-screen-xl w-full mt-common'>
 				{cards ? cards.map(item =>
 					<motion.div
 						className='w-full bg-teal-800 p-2 rounded-md'
