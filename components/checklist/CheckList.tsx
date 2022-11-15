@@ -49,6 +49,8 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 							className={`justify-center flex flex-row mb-2 ${index % 2 === 1 ? 'text-primary-600' : 'text-secondary-600'}`}
 							key={"listItem" + item.id}
 							variants={animation}
+							whileHover={{ scale: 1.2 }}
+							whileTap={{ scale: 0.9 }}
 						>
 							{item.icon.data ?
 								<div
