@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 html,
 body,
@@ -11,20 +12,11 @@ body,
   scroll-behavior: smooth;
 }
 
-@font-face {
-  font-family: 'Quicksand';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Quicksand'), url(/fonts/Quicksand-VariableFont_wght.ttf) format('ttf');
+.btn-primary {
+  @apply bg-primary hover:bg-primary-700 text-white text-lg font-bold py-2 px-4 rounded;
 }
-
-.font-quicksand {
-  font-family: 'Quicksand', sans-serif;
-}
-
-.btn {
-  @apply bg-teal-600 hover:bg-teal-800 text-white text-lg font-bold py-2 px-4 rounded;
+.btn-secondary{
+  @apply bg-secondary hover:bg-secondary-700 text-white text-lg font-bold py-2 px-4 rounded;
 }
 
 .input-box{
@@ -32,11 +24,11 @@ body,
 }
 
 .heading{
-  @apply text-6xl font-bold text-teal-800;
+  @apply text-6xl font-bold;
 }
 
 .sub-heading{
-  @apply text-5xl font-bold text-teal-800;
+  @apply text-5xl font-bold;
 }
 .mb-common {
   @apply mb-16;
@@ -44,4 +36,41 @@ body,
 
 .mt-common {
   @apply mt-16;
+}
+.my-common {
+  @apply my-16;
+}
+
+.pb-common {
+  @apply pb-16
+}
+
+.animated-text-primary {
+  background-image: linear-gradient(to right, theme('colors.primary.800') 40%, theme('colors.primary.200') 50%, theme('colors.primary.800') 60%);
+}
+.animated-text-secondary {
+  background-image: linear-gradient(to right, theme('colors.secondary.800') 40%, theme('colors.secondary.200') 50%, theme('colors.secondary.800') 60%);
+}
+.animated-text {
+  text-transform: uppercase;
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  background-size: 300%;
+  background-position: -100%;
+
+  animation: animatedText 5s infinite;
+}
+
+@keyframes animatedText {
+  to {
+    background-position: 100%;
+  }
+}
+
+.font-dancing-script {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 400;
 }

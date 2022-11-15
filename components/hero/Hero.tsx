@@ -30,13 +30,12 @@ const Hero: NextPage<Props> = ({
   variant,
   index,
 }) => {
-
   const isOdd = variant === Variant.primary || variant === Variant.tertiary
   return (
     <motion.div
-      className={`flex gap-8 justify-start  ${isOdd
-        ? "md:flex-row flex-col"
-        : "md:flex-row-reverse flex-col"
+      className={`flex gap-8 justify-start  bg-stripes-white ${isOdd
+        ? "bg-primary-300/20 bg-stripes md:flex-row flex-col"
+        : "bg-secondary-300/20 bg-stripes-reverse md:flex-row-reverse flex-col"
         }`}
       id={`hero-${index + 1}`}
       initial={isOdd ? { x: 100, opacity: 0 } : { x: -100, opacity: 0 }}
@@ -54,14 +53,16 @@ const Hero: NextPage<Props> = ({
           />
         </div> : <></>
       }
-      <div className="flex flex-col md:w-5/12 w-full justify-center md:px-0 px-3">
-        <h2 className="sub-heading mb-3 text-center md:text-left">{heading}</h2>
+      <div className="my-common flex flex-col md:w-5/12 w-full justify-center md:px-0 px-3">
+        <h2 className={`font-dancing-script sub-heading mb-3 text-center md:text-left animated-text ${isOdd ? 'animated-text-primary' : 'animated-text-secondary'}`}>
+          {heading}
+        </h2>
         <h3 className="text-3xl mb-4  text-center md:text-left">{subHeading}</h3>
-        <p className="text-lg">{text}</p>
+        <p className="text-lg text-tertiary-900">{text}</p>
         {button ?
           <motion.a
             href={button.url}
-            className="btn self-center mt-8"
+            className={`${isOdd ? "btn-primary" : "btn-secondary"} self-center mt-8`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
           >

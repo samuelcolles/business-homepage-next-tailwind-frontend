@@ -53,7 +53,7 @@ const Home: NextPage<Props> = ({
   return (
     <div className="flex flex-col h-full">
       <NavBar businessName={businessName} navLinks={navLinks} />
-      {siteHeader && siteHeader.image ? <SiteHeader siteHeader={siteHeader} /> : <></>}
+      {siteHeader && siteHeader.image && siteHeader.image.data ? <SiteHeader siteHeader={siteHeader} /> : <></>}
       {siteHeader && siteHeader.videoHeaderSRC ? <VideoHeader videoHeaderSRC={siteHeader.videoHeaderSRC} /> : <></>}
       {heroes ? <HeroSection heroes={heroes} /> : <></>}
       {checkLists ? <CheckListSection checkLists={checkLists} /> : <></>}
@@ -88,7 +88,7 @@ export const getStaticProps = async () => {
 
   const mapLocation = await getDataItem("/api/map-location");
 
-  const checkLists = await getDataItem("/api/check-lists?populate=*&sort=id");
+  const checkLists = await getDataItem("/api/check-lists?populate[0]=icon&populate[1]=list&populate[2]=list.icon&sort=id");
 
   const imageCardGrids = await getDataItem("/api/image-card-grids?populate[0]=cards&populate[1]=cards.image&sort=id")
 
@@ -99,7 +99,7 @@ export const getStaticProps = async () => {
 
   var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
   if (siteHeader) siteHeader = siteHeader.attributes;
-  console.log(mapLocation)
+  console.log(checkLists)
 
 
   return {

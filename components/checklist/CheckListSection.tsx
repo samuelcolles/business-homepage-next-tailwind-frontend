@@ -6,7 +6,7 @@ interface Props {
 }
 
 const CheckListSection: NextPage<Props> = ({ checkLists }) => {
-	return <>
+	return <div className='bg-tertiary-50/10'>
 		{checkLists.map((item, index) => (
 			<CheckList
 				index={index}
@@ -16,7 +16,7 @@ const CheckListSection: NextPage<Props> = ({ checkLists }) => {
 				icon={item.attributes.icon}
 			/>
 		))}
-	</>
+	</div>
 
 }
 

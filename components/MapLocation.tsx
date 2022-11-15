@@ -27,13 +27,12 @@ const animation: Variants = {
 const MapLocation: NextPage<Props> = ({ mapLocation: { attributes: { src, header, address } } }) => {
 	return <motion.div
 		id='map-location'
-		className='mb-common text-center'
+		className='pb-common text-center bg-tertiary-50/10'
 		variants={animation}
 		transition={{ staggerChildren: 0.1 }}
 		initial="offScreen"
 		whileInView="onScreen"
 		viewport={{ once: true, amount: 0.3 }}
-
 	>
 		{header && header.length > 0 ?
 			<h2 className='heading'>{header}</h2> : <></>

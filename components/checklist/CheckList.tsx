@@ -3,6 +3,7 @@ import { NextPage } from "next";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import tailwind from "../../tailwind.config";
 
 interface Props {
 	heading: string;
@@ -27,7 +28,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 	return (
 		<motion.div
 			id={"check-list-" + (index + 1).toString()}
-			className="flex flex-col justify-center sm:px-4 px-0 mb-common"
+			className="flex flex-col justify-center xl:px-0 px-4 mb-common"
 			transition={{ staggerChildren: 0.1 }}
 			initial="offScreen"
 			whileInView="onScreen"
@@ -35,7 +36,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 		>
 			{heading ?
 				<motion.h1
-					className="text-center heading mb-common"
+					className="text-center heading mb-common text-primary-800 mt-common"
 					variants={animation}
 				>
 					{heading}
@@ -43,15 +44,25 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 				: <></>
 			}
 			<div className="flex justify-center">
-				<div className="max-w-screen-xl grid md:grid-cols-3 grid-cols-1 w-full text-teal-800 gap-5">
-					{list.map((item) =>
+				<div className="max-w-screen-xl grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 w-full gap-5">
+					{list.map((item, index) =>
 						<motion.div
-							className="flex flex-row mb-2"
+							className={`font- flex flex-row mb-2 ${index % 2 === 1 ? 'text-primary' : 'text-secondary'}`}
 							key={"listItem" + item.id}
 							variants={animation}
 						>
-							{icon.data ? <img src={process.env.STRAPI_BACKEND_URL + icon.data.attributes.url} height={42} width={42}></img> :
-								<AiFillCheckCircle className="mr-3 flex-shrink-0" size={42} />
+							{item.icon.data ?
+								<div
+									// src={process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url}
+									className={`h-11 w-11 mr-2 ${index % 2 === 1 ? 'bg-primary' : 'bg-secondary'}`}
+									style={{
+										mask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,
+										maskRepeat: 'no-repeat'
+									}}
+
+								/> :
+								icon.data ? <img src={process.env.STRAPI_BACKEND_URL + icon.data.attributes.url} height={42} width={42}></img> :
+									<AiFillCheckCircle className="mr-3 flex-shrink-0" size={42} />
 							}
 							<div>
 								{item.subheading ?

@@ -12,9 +12,9 @@ const ContactForm: NextPage<Props> = ({ contactEmail }) => {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
 
-	const [nameError, setNameError] = useState(true);
-	const [emailError, setEmailError] = useState(true);
-	const [messageError, setMessageError] = useState(true);
+	const [nameError, setNameError] = useState(false);
+	const [emailError, setEmailError] = useState(false);
+	const [messageError, setMessageError] = useState(false);
 
 
 	async function handleOnSubmit(e: any) {

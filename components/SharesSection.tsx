@@ -8,7 +8,7 @@ interface Props {
 
 const SharesSection: NextPage<Props> = ({ shares }) => {
 	return (
-		<div className='flex flex-row gap-4 sm:gap-8 justify-center mb-common'>
+		<div className='flex flex-row gap-4 sm:gap-8 justify-center pb-common bg-tertiary-50/10'>
 			{shares.map(item =>
 				<motion.a
 					href={item.url}
