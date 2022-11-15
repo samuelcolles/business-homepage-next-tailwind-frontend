@@ -14,6 +14,7 @@ import VideoHeader from "../components/VideoHeader";
 import ImageCardSection from "../components/imageCard/ImageCardSection";
 
 interface Props {
+
   siteInfo: {
     businessName: string;
     copyRight: string;
@@ -21,7 +22,7 @@ interface Props {
     logo: {};
   };
   siteHeader: any;
-  shares: any[];
+  shares: any;
   heroes: any[];
   checkLists: {
     id: number;
@@ -35,6 +36,7 @@ interface Props {
   navLinks: any[];
   mapLocation: any;
   imageCardGrids: any[];
+  videoHeader: any;
 }
 
 const Home: NextPage<Props> = ({
@@ -47,6 +49,7 @@ const Home: NextPage<Props> = ({
   employees,
   navLinks,
   mapLocation,
+  videoHeader
 
 }) => {
   const { businessName, copyRight } = siteInfo;
@@ -54,7 +57,7 @@ const Home: NextPage<Props> = ({
     <div className="flex flex-col h-full">
       <NavBar businessName={businessName} navLinks={navLinks} />
       {siteHeader && siteHeader.image && siteHeader.image.data ? <SiteHeader siteHeader={siteHeader} /> : <></>}
-      {siteHeader && siteHeader.videoHeaderSRC ? <VideoHeader videoHeaderSRC={siteHeader.videoHeaderSRC} /> : <></>}
+      {videoHeader && videoHeader.attributes.src && videoHeader.attributes.src.length > 0 ? <VideoHeader src={videoHeader.attributes.src} thumbnail={videoHeader.attributes.thumbnail} /> : <></>}
       {heroes ? <HeroSection heroes={heroes} /> : <></>}
       {checkLists ? <CheckListSection checkLists={checkLists} /> : <></>}
       {imageCardGrids ? <ImageCardSection imageCardGrids={imageCardGrids} /> : <></>}
@@ -82,7 +85,9 @@ export const getStaticProps = async () => {
   }
 
   var shares = await getDataItem("/api/share?populate[0]=share&populate[1]=share.icon&sort=id");
-  if (shares) shares = shares.attributes.share;
+  if (shares) shares = shares.attributes;
+
+  const videoHeader = await getDataItem("/api/video-header?populate=*");
 
   const heroes = await getDataItem("/api/heroes?populate=*&sort=id");
 
@@ -99,8 +104,6 @@ export const getStaticProps = async () => {
 
   var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
   if (siteHeader) siteHeader = siteHeader.attributes;
-  console.log(checkLists)
-
 
   return {
     props: {
@@ -113,6 +116,7 @@ export const getStaticProps = async () => {
       navLinks,
       mapLocation,
       imageCardGrids,
+      videoHeader,
     },
   };
 };

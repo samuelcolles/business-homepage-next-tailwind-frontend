@@ -54,7 +54,9 @@ const Hero: NextPage<Props> = ({
         </div> : <></>
       }
       <div className="my-common flex flex-col md:w-5/12 w-full justify-center md:px-0 px-3">
-        <h2 className={`font-dancing-script sub-heading mb-3 text-center md:text-left animated-text ${isOdd ? 'animated-text-primary' : 'animated-text-secondary'}`}>
+        <h2
+          className={`font-satisfy sub-heading mb-3 text-center md:text-left animated-text ${isOdd ? 'text-primary-800' : 'text-secondary-800'}`}
+        >
           {heading}
         </h2>
         <h3 className="text-3xl mb-4  text-center md:text-left">{subHeading}</h3>

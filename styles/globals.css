@@ -41,36 +41,12 @@ body,
   @apply my-16;
 }
 
+.py-common {
+  @apply py-16;
+}
 .pb-common {
-  @apply pb-16
+  @apply pb-16;
 }
-
-.animated-text-primary {
-  background-image: linear-gradient(to right, theme('colors.primary.800') 40%, theme('colors.primary.200') 50%, theme('colors.primary.800') 60%);
-}
-.animated-text-secondary {
-  background-image: linear-gradient(to right, theme('colors.secondary.800') 40%, theme('colors.secondary.200') 50%, theme('colors.secondary.800') 60%);
-}
-.animated-text {
-  text-transform: uppercase;
-  
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  background-size: 300%;
-  background-position: -100%;
-
-  animation: animatedText 5s infinite;
-}
-
-@keyframes animatedText {
-  to {
-    background-position: 100%;
-  }
-}
-
-.font-dancing-script {
-  font-family: 'Dancing Script', cursive;
-  font-weight: 400;
+.pt-common {
+  @apply pt-16;
 }

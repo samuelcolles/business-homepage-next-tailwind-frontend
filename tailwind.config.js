@@ -1,17 +1,14 @@
+const { fontFamily } = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
-
 const toRgba = (hexCode, opacity = 50) => {
   let hex = hexCode.replace('#', '');
-
   if (hex.length === 3) {
     hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
   }
-
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
-
   return `rgba(${r},${g},${b},${opacity / 100})`;
 };
 
@@ -35,46 +32,63 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        parisienne: ['var(--font-parisienne)'],
+        satisfy: ['var(--font-satisfy)'],
+      },
       colors: {
         'primary': {
-          DEFAULT: '#C62A34',
-          '50': '#F0B8BB',
-          '100': '#ECA7AB',
-          '200': '#E5858B',
-          '300': '#DE646B',
-          '400': '#D7424B',
-          '500': '#C62A34',
-          '600': '#982028',
-          '700': '#69161C',
-          '800': '#3B0D10',
-          '900': '#0D0303'
+          DEFAULT: '#DC2331',
+          '50': '#F5C1C5',
+          '100': '#F2B0B5',
+          '200': '#ED8D94',
+          '300': '#E76973',
+          '400': '#E24652',
+          '500': '#DC2331',
+          '600': '#AC1B26',
+          '700': '#7B141B',
+          '800': '#4B0C11',
+          '900': '#1A0406'
         },
         'secondary': {
-          DEFAULT: '#34C62A',
-          '50': '#BBF0B8',
-          '100': '#ABECA7',
-          '200': '#8BE585',
-          '300': '#6BDE64',
-          '400': '#4BD742',
-          '500': '#34C62A',
-          '600': '#289820',
-          '700': '#1C6916',
-          '800': '#103B0D',
-          '900': '#030D03'
+          DEFAULT: '#8DDC23',
+          '50': '#DFF5C1',
+          '100': '#D6F2B0',
+          '200': '#C4ED8D',
+          '300': '#B1E769',
+          '400': '#9FE246',
+          '500': '#8DDC23',
+          '600': '#6EAC1B',
+          '700': '#4F7B14',
+          '800': '#304B0C',
+          '900': '#111A04'
         },
         'tertiary': {
-          DEFAULT: '#2A34C6',
-          '50': '#B8BBF0',
-          '100': '#A7ABEC',
-          '200': '#858BE5',
-          '300': '#646BDE',
-          '400': '#424BD7',
-          '500': '#2A34C6',
-          '600': '#202898',
-          '700': '#161C69',
-          '800': '#0D103B',
-          '900': '#03030D'
+          DEFAULT: '#23DCCE',
+          '50': '#C1F5F1',
+          '100': '#B0F2ED',
+          '200': '#8DEDE6',
+          '300': '#69E7DE',
+          '400': '#46E2D6',
+          '500': '#23DCCE',
+          '600': '#1BACA1',
+          '700': '#147B73',
+          '800': '#0C4B46',
+          '900': '#041A19'
         },
+        'quaternary': {
+          DEFAULT: '#7223DC',
+          '50': '#D8C1F5',
+          '100': '#CCB0F2',
+          '200': '#B68DED',
+          '300': '#9F69E7',
+          '400': '#8946E2',
+          '500': '#7223DC',
+          '600': '#591BAC',
+          '700': '#40147B',
+          '800': '#270C4B',
+          '900': '#0E041A'
+        }
       }
 
 

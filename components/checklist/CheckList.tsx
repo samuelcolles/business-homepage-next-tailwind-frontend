@@ -23,12 +23,11 @@ const animation: Variants = {
 	}
 }
 
-
 const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 	return (
 		<motion.div
 			id={"check-list-" + (index + 1).toString()}
-			className="flex flex-col justify-center xl:px-0 px-4 mb-common"
+			className="flex flex-col justify-center xl:px-0 pb-common bg-stripes-white bg-stripes-reverse bg-tertiary-300/20"
 			transition={{ staggerChildren: 0.1 }}
 			initial="offScreen"
 			whileInView="onScreen"
@@ -36,7 +35,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 		>
 			{heading ?
 				<motion.h1
-					className="text-center heading mb-common text-primary-800 mt-common"
+					className="text-center heading mb-common text-quaternary-800 mt-common font-satisfy"
 					variants={animation}
 				>
 					{heading}
@@ -47,7 +46,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 				<div className="max-w-screen-xl grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 w-full gap-5">
 					{list.map((item, index) =>
 						<motion.div
-							className={`font- flex flex-row mb-2 ${index % 2 === 1 ? 'text-primary' : 'text-secondary'}`}
+							className={`justify-center flex flex-row mb-2 ${index % 2 === 1 ? 'text-primary-600' : 'text-secondary-600'}`}
 							key={"listItem" + item.id}
 							variants={animation}
 						>

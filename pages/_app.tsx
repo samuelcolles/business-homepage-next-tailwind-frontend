@@ -1,16 +1,24 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Dancing_Script } from '@next/font/google';
+import { Satisfy } from '@next/font/google';
+import { Parisienne } from '@next/font/google';
 
-const dancing = Dancing_Script({
 
+const parisienne = Parisienne({
+  weight: "400",
+  variable: '--font-parisienne',
+  subsets: ['latin']
+});
+const satisfy = Satisfy({
+  weight: "400",
+  variable: '--font-satisfy',
+  subsets: ['latin']
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={dancing.className}>
-
-      <Component {...pageProps} />;
+    <main className={`${parisienne.variable} ${satisfy.variable} font-sans`}>
+      <Component {...pageProps} />
     </main>
   )
 }

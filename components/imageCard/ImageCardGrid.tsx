@@ -23,13 +23,13 @@ const animation: Variants = {
 const ImageCardGrid: NextPage<Props> = ({ heading, subheading, cards }) => {
 	return (
 		<motion.div
-			className="text-center mb-common px-4 xl:px-0"
+			className="text-center py-common px-4 xl:px-0 bg-stripes-white bg-stripes bg-quaternary-300/20"
 			transition={{ staggerChildren: 0.1 }}
 			initial="offScreen"
 			whileInView="onScreen"
 			viewport={{ once: true, amount: 0.3 }}
 		>
-			<motion.h2 className="heading" variants={animation}>
+			<motion.h2 className="heading font-satisfy text-quaternary-800" variants={animation}>
 				{heading}
 			</motion.h2>
 			<motion.h3 className="text-3xl font-semibold" variants={animation}>
@@ -38,9 +38,9 @@ const ImageCardGrid: NextPage<Props> = ({ heading, subheading, cards }) => {
 			<div className="flex justify-center text-left">
 				<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-screen-xl w-full mt-common">
 					{cards ? (
-						cards.map(item => (
+						cards.map((item, index) => (
 							<motion.div
-								className="w-full bg-teal-800 p-4 rounded-md"
+								className={`w-full ${index % 2 == 0 ? 'bg-primary-600' : 'bg-secondary-600'} p-4 rounded-md`}
 								key={"image-card" + heading + item.id}
 								variants={animation}
 							>
