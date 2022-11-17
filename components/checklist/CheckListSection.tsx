@@ -1,12 +1,13 @@
 import React from 'react'
 import type { NextPage } from "next";
 import CheckList from "./CheckList";
+
 interface Props {
 	checkLists: any[];
 }
 
 const CheckListSection: NextPage<Props> = ({ checkLists }) => {
-	return <div className=''>
+	return <>
 		{checkLists.map((item, index) => (
 			<CheckList
 				index={index}
@@ -16,8 +17,7 @@ const CheckListSection: NextPage<Props> = ({ checkLists }) => {
 				icon={item.attributes.icon}
 			/>
 		))}
-	</div>
+	</>
+};
 
-}
-
-export default CheckListSection
+export default CheckListSection;

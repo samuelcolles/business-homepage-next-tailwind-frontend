@@ -5,22 +5,21 @@ import { Parisienne } from '@next/font/google';
 
 
 const parisienne = Parisienne({
-  weight: "400",
-  variable: '--font-parisienne',
-  subsets: ['latin']
+	weight: "400",
+	variable: '--font-parisienne',
+	subsets: ['latin']
 });
 const satisfy = Satisfy({
-  weight: "400",
-  variable: '--font-satisfy',
-  subsets: ['latin']
+	weight: "400",
+	variable: '--font-satisfy',
+	subsets: ['latin']
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <main className={`${parisienne.variable} ${satisfy.variable} font-sans`}>
-      <Component {...pageProps} />
-    </main>
-  )
-}
+	return <main className={`${parisienne.variable} ${satisfy.variable} font-sans`}>
+		<Component {...pageProps} />
+	</main>
+
+};
 
 export default MyApp;

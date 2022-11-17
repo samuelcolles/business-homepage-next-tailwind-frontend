@@ -1,5 +1,5 @@
-import React from 'react'
-import type { NextPage } from 'next'
+import React from 'react';
+import type { NextPage } from 'next';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 
@@ -7,8 +7,9 @@ interface Props {
 	shares: {
 		share: any[];
 		header: string;
-	}
-}
+	};
+};
+
 const animation: Variants = {
 	offScreen: { y: 100, opacity: 0 },
 	onScreen: {
@@ -18,12 +19,12 @@ const animation: Variants = {
 			ease: "easeOut"
 		}
 	}
-}
+};
 
 const SharesSection: NextPage<Props> = ({ shares }) => {
-	console.log(shares);
 	return <motion.div
-		className='py-common bg-stripes-white bg-stripes bg-quaternary-300/20'
+		id='shares'
+		className='py-common'
 		transition={{ staggerChildren: 0.1 }}
 		initial="offScreen"
 		whileInView="onScreen"
@@ -31,12 +32,14 @@ const SharesSection: NextPage<Props> = ({ shares }) => {
 	>
 		{shares.header && shares.header.length > 0 ?
 			<motion.h1
-				className='text-center heading font-satisfy mb-common text-quaternary-800'
+				className='text-center heading  mb-common text-tertiary-800'
 				variants={animation}
 			>
-				{shares.header}</motion.h1>
-			: <></>}
-		<div className='flex flex-row gap-4 sm:gap-8 justify-center '>
+				{shares.header}
+			</motion.h1>
+			: <></>
+		}
+		<div className='flex flex-row gap-4 sm:gap-8 justify-center'>
 			{shares.share.map(item =>
 				<motion.a
 					href={item.url}
@@ -47,21 +50,19 @@ const SharesSection: NextPage<Props> = ({ shares }) => {
 					variants={animation}
 				>
 					<div
-						// src={process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url}
-						className={`h-16 w-16 bg-quaternary-800`}
+						className={`h-16 w-16 bg-tertiary-800`}
 						style={{
 							mask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,
 							maskRepeat: 'no-repeat'
 						}}
 					/>
-
-					<h4 className='font-bold text-lg text-quaternary-900'>
+					<h4 className='font-bold text-lg text-tertiary-900'>
 						{item.label}
 					</h4>
 				</motion.a>
 			)}
 		</div>
 	</motion.div>
-}
+};
 
-export default SharesSection
+export default SharesSection;

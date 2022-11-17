@@ -4,12 +4,10 @@ import Hero, { Variant } from "./Hero";
 
 interface Props {
 	heroes: any[];
-}
+};
 
 const HeroSection: NextPage<Props> = ({ heroes }) => {
-	return (<div
-		className='flex flex-col w-full'
-	>
+	return <>
 		{heroes.map((item, index) => (
 			<Hero
 				key={"hero" + item.id}
@@ -28,9 +26,7 @@ const HeroSection: NextPage<Props> = ({ heroes }) => {
 				button={item.attributes.button}
 			/>
 		))}
-	</div>
+	</>
+};
 
-	)
-}
-
-export default HeroSection
+export default HeroSection;

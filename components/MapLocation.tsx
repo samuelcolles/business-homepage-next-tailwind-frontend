@@ -9,9 +9,9 @@ interface Props {
 			src: string;
 			header: string;
 			address: string;
-		}
-	}
-}
+		};
+	};
+};
 
 const animation: Variants = {
 	offScreen: { y: 100, opacity: 0 },
@@ -22,12 +22,12 @@ const animation: Variants = {
 			ease: "easeOut"
 		}
 	}
-}
+};
 
 const MapLocation: NextPage<Props> = ({ mapLocation: { attributes: { src, header, address } } }) => {
 	return <motion.div
 		id='map-location'
-		className='pt-common text-center bg-stripes-white bg-stripes-reverse bg-tertiary-300/20'
+		className='pt-common text-center'
 		variants={animation}
 		transition={{ staggerChildren: 0.1 }}
 		initial="offScreen"
@@ -35,10 +35,10 @@ const MapLocation: NextPage<Props> = ({ mapLocation: { attributes: { src, header
 		viewport={{ once: true, amount: 0.3 }}
 	>
 		{header && header.length > 0 ?
-			<h2 className='heading font-satisfy text-quaternary-800'>{header}</h2> : <></>
+			<h2 className='heading '>{header}</h2> : <></>
 		}
 		{address && address.length > 0 ?
-			<h2 className='text-2xl font-semibold mt-2 text-quaternary-900'>{address}</h2> : <></>
+			<h2 className='text-2xl font-semibold mt-2'>{address}</h2> : <></>
 		}
 		{src && src.length > 0 ?
 			<iframe
@@ -47,8 +47,7 @@ const MapLocation: NextPage<Props> = ({ mapLocation: { attributes: { src, header
 				loading="lazy"
 			></iframe> : <></>
 		}
-
 	</motion.div>
-}
+};
 
-export default MapLocation
+export default MapLocation;

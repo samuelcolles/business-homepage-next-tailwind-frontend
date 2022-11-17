@@ -21,65 +21,63 @@ const animation: Variants = {
 };
 
 const ImageCardGrid: NextPage<Props> = ({ heading, subheading, cards }) => {
-	return (
-		<motion.div
-			className="text-center py-common px-4 xl:px-0 bg-stripes-white bg-stripes bg-quaternary-300/20"
-			transition={{ staggerChildren: 0.1 }}
-			initial="offScreen"
-			whileInView="onScreen"
-			viewport={{ once: true, amount: 0.3 }}
-		>
-			<motion.h2 className="heading font-satisfy text-quaternary-800" variants={animation}>
-				{heading}
-			</motion.h2>
-			<motion.h3 className="text-3xl font-semibold" variants={animation}>
-				{subheading}
-			</motion.h3>
-			<div className="flex justify-center text-left">
-				<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-screen-xl w-full mt-common">
-					{cards ? (
-						cards.map((item, index) => (
-							<motion.div
-								className={`w-full ${index % 2 == 0 ? 'bg-primary-600' : 'bg-secondary-600'} p-4 rounded-md`}
-								key={"image-card" + heading + item.id}
-								variants={animation}
-							>
-								<div
-									className="flex bg-cover bg-center w-full aspect-square rounded-md"
-									style={{
-										backgroundImage: `url(${process.env.STRAPI_BACKEND_URL +
-											item.image.data.attributes.url
-											})`,
-									}}
-								/>
-								<div className="flex flex-row justify-between">
-									{item.heading ? (
-										<h2 className="text-white text-3xl">{item.heading}</h2>
-									) : (
-										<></>
-									)}
-									{item.cost ? (
-										<h3 className="text-white text-bold text-3xl rounded-md">
-											{item.cost}
-										</h3>
-									) : (
-										<></>
-									)}
-								</div>
-								{item.text ? (
-									<h3 className="text-gray-200">{item.text}</h3>
+	return <motion.div
+		className="text-center py-common px-4 xl:px-0"
+		transition={{ staggerChildren: 0.1 }}
+		initial="offScreen"
+		whileInView="onScreen"
+		viewport={{ once: true, amount: 0.3 }}
+	>
+		<motion.h2 className="heading " variants={animation}>
+			{heading}
+		</motion.h2>
+		<motion.h3 className="text-3xl font-semibold" variants={animation}>
+			{subheading}
+		</motion.h3>
+		<div className="flex justify-center text-left">
+			<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-screen-xl w-full mt-common">
+				{cards ? (
+					cards.map((item, index) => (
+						<motion.div
+							className={`w-full ${index % 2 == 0 ? 'bg-primary-600' : 'bg-secondary-600'} p-4 rounded-md`}
+							key={"image-card" + heading + item.id}
+							variants={animation}
+						>
+							<div
+								className="flex bg-cover bg-center w-full aspect-square rounded-md"
+								style={{
+									backgroundImage: `url(${process.env.STRAPI_BACKEND_URL +
+										item.image.data.attributes.url
+										})`,
+								}}
+							/>
+							<div className="flex flex-row justify-between">
+								{item.heading ? (
+									<h2 className="text-white text-3xl">{item.heading}</h2>
 								) : (
 									<></>
 								)}
-							</motion.div>
-						))
-					) : (
-						<></>
-					)}
-				</div>
+								{item.cost ? (
+									<h3 className="text-white text-bold text-3xl rounded-md">
+										{item.cost}
+									</h3>
+								) : (
+									<></>
+								)}
+							</div>
+							{item.text ? (
+								<h3 className="text-gray-200">{item.text}</h3>
+							) : (
+								<></>
+							)}
+						</motion.div>
+					))
+				) : (
+					<></>
+				)}
 			</div>
-		</motion.div>
-	);
+		</div>
+	</motion.div>
 };
 
 export default ImageCardGrid;
