@@ -40,4 +40,4 @@ It will probably be easier for you to just deploy this to Vercel.
 
 This website is statically generated, meaning that you will need to rebuild and restart the app to see changes on the backend. Right now this is done manually but in the future it will be automated.
 
-To build this app type: "npm run build" and wait for that to finish. Then use "npm run start" to start the app. If you are hosting on linux I recommend using a process manager such as PM2.
+To get started clone the project from github. Next, install the packages by running "npm i" Then install it To build this app type: "npm run build" and wait for that to finish. Finally use "npm run start" to start the app. If you are hosting on linux I recommend using a process manager such as PM2.
