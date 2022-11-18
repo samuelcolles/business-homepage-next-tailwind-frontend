@@ -21,24 +21,26 @@ const animation: Variants = {
 
 const VideoHeader: NextPage<Props> = ({ src, thumbnail }) => {
 	const [showThumbnail, setShowThumbnail] = useState(true);
-	return <div>
-		{showThumbnail ?
-			<motion.div
-				variants={animation}
-				initial="hidden"
-				animate="show"
-				onClick={() => setShowThumbnail(false)}
-				className='w-full aspect-[16/9] bg-cover bg-center '
-				style={{ backgroundImage: `url(${process.env.STRAPI_BACKEND_URL + thumbnail.data.attributes.url})` }}
-			>
-			</motion.div>
-			: <iframe
-				className='aspect-[16/9] w-full'
-				src={src + "?autoplay=1"}
-				title="YouTube video player"
-				allowFullScreen
-			/>
-		}
+	return <div className='flex justify-center divider-common'>
+		<div className='max-w-screen-common w-full mx-common'>
+			{showThumbnail ?
+				<motion.div
+					variants={animation}
+					initial="hidden"
+					animate="show"
+					onClick={() => setShowThumbnail(false)}
+					className='w-full aspect-[16/9] bg-cover bg-center '
+					style={{ backgroundImage: `url(${process.env.STRAPI_BACKEND_URL + thumbnail.data.attributes.url})` }}
+				>
+				</motion.div>
+				: <iframe
+					className='aspect-[16/9] w-full'
+					src={src + "?autoplay=1"}
+					title="YouTube video player"
+					allowFullScreen
+				/>
+			}
+		</div>
 	</div>
 };
 

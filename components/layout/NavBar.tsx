@@ -10,7 +10,7 @@ interface Props {
 
 const NavBar: NextPage<Props> = ({ businessName, navLinks }) => {
 	return <div className="bg-primary-800 text-white flex justify-center w-full z-50">
-		<div className="max-w-screen-xl w-full py-6 px-4 xl:px-0 justify-between flex md:flex-row flex-col content-end">
+		<div className="max-w-screen-common w-full py-6 px-4 xl:px-0 justify-between flex md:flex-row flex-col content-end">
 			<motion.h1 className="font-parisienne md:text-7xl text-5xl font-bold text-center">
 				{businessName ? businessName : "Place Holder"}
 			</motion.h1>
@@ -24,10 +24,9 @@ const NavBar: NextPage<Props> = ({ businessName, navLinks }) => {
 						>
 							<Link href={link.url} >{link.label}</Link>
 						</motion.div>
-					) : <></>
+					)
+						: <></>
 				}
-
-
 			</div>
 		</div>
 	</div>

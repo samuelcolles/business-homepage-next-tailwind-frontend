@@ -15,7 +15,7 @@ const ImageCardSection: NextPage<Props> = ({ imageCardGrids }) => {
 				subheading={item.attributes.subheading}
 				cards={item.attributes.cards}
 			/>
-		)};
+		)}
 	</div>
 }
 

@@ -24,43 +24,46 @@ const animation: Variants = {
 const SharesSection: NextPage<Props> = ({ shares }) => {
 	return <motion.div
 		id='shares'
-		className='py-common'
+		className='py-common flex justify-center '
 		transition={{ staggerChildren: 0.1 }}
 		initial="offScreen"
 		whileInView="onScreen"
 		viewport={{ once: true, amount: 0.3 }}
 	>
-		{shares.header && shares.header.length > 0 ?
-			<motion.h1
-				className='text-center heading  mb-common text-tertiary-800'
-				variants={animation}
-			>
-				{shares.header}
-			</motion.h1>
-			: <></>
-		}
-		<div className='flex flex-row gap-4 sm:gap-8 justify-center'>
-			{shares.share.map(item =>
-				<motion.a
-					href={item.url}
-					whileHover={{ scale: 1.2 }}
-					whileTap={{ scale: 0.9 }}
-					key={"share" + item.id}
-					className="flex flex-col justify-center items-center text-center"
+		<div className='container-common mx-4'>
+
+			{shares.header && shares.header.length > 0 ?
+				<motion.h1
+					className='text-center heading  mb-common text-tertiary-800'
 					variants={animation}
 				>
-					<div
-						className={`h-16 w-16 bg-tertiary-800`}
-						style={{
-							mask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,
-							maskRepeat: 'no-repeat'
-						}}
-					/>
-					<h4 className='font-bold text-lg text-tertiary-900'>
-						{item.label}
-					</h4>
-				</motion.a>
-			)}
+					{shares.header}
+				</motion.h1>
+				: <></>
+			}
+			<div className='flex flex-row gap-4 sm:gap-8 justify-center'>
+				{shares.share.map(item =>
+					<motion.a
+						href={item.url}
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						key={"share" + item.id}
+						className="flex flex-col justify-center items-center text-center"
+						variants={animation}
+					>
+						<div
+							className={`h-16 w-16 bg-tertiary-800`}
+							style={{
+								mask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,
+								maskRepeat: 'no-repeat'
+							}}
+						/>
+						<h4 className='font-bold text-lg text-tertiary-900'>
+							{item.label}
+						</h4>
+					</motion.a>
+				)}
+			</div>
 		</div>
 	</motion.div>
 };

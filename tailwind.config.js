@@ -84,7 +84,7 @@ module.exports = {
       const utilities = {
         '.bg-stripes': {
           backgroundImage:
-            'linear-gradient(45deg, var(--stripes-color) 12%, transparent 12%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62%, transparent 62%, transparent 100%)',
+            'linear-gradient(135deg, var(--stripes-color) 12%, transparent 12%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62%, transparent 62%, transparent 100%), linear-gradient(45deg, var(--stripes-color) 12%, transparent 12%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62%, transparent 62%, transparent 100%)',
           backgroundSize: '40px 40px',
         },
         '.bg-stripes-reverse': {
@@ -104,7 +104,7 @@ module.exports = {
           if (a !== undefined) {
             addColor(name, colors[name])
           } else {
-            addColor(name, `rgba(${r}, ${g}, ${b}, 0.4)`)
+            addColor(name, `rgba(${r}, ${g}, ${b}, 0.2)`)
           }
         } catch (_) {
           addColor(name, colors[name])

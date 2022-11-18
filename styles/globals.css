@@ -17,7 +17,7 @@ body,
 }
 
 .input-box{
-  @apply p-1 bg-teal-50 border border-tertiary-600 rounded;
+  @apply p-1 bg-tertiary-50 border border-tertiary-600 rounded;
 }
 .heading{
   @apply text-tertiary-800 text-6xl font-bold font-satisfy ;
@@ -26,12 +26,24 @@ body,
   @apply text-tertiary-800 text-5xl font-bold font-satisfy;
 }
 .page-background > :nth-child(odd) {
-  @apply bg-stripes-white bg-stripes-reverse bg-primary-300/20;
+  @apply bg-stripes-primary-50 bg-stripes-reverse bg-white;
 }
 .page-background > :nth-child(even) {
   @apply bg-stripes-white bg-stripes bg-secondary-300/20;
 }
+.max-w-screen-common{
+  @apply max-w-screen-xl;
+}
 
+.container-common {
+  @apply p-6 border-4 border-tertiary-50 bg-white w-full max-w-screen-xl;
+}
+.divider-common {
+  @apply border-b-4 border-tertiary-50;
+}
+.divider-common-top {
+  @apply border-t-4 border-tertiary-50;
+}
 .mb-common {
   @apply mb-16;
 }
