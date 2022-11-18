@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Business homepage builder
 
 ## Getting Started
 
-First, run the development server:
+First, you will need the backend avialable here:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<https://github.com/samuelcolles/business-homepage-next-tailwind-backend>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+by default it will be running on port 3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Populate the backend
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+You Will want to start by adding stuff into the backend, make sure you remember to hit "publish" or it wont show up on the site. You also need to allow public access to the conent in the settings>Users & Permissions Plugin>Roles>Public. Under the "Permissions" heading select each item and check on "find and findOne" for every item. Then click "save" on the top right.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Fitting your needs
 
-## Learn More
+The site is generated automatically based on what you choose to use. Content sections can all be left blank if you don't want to use them. The content you do use will be populated and laid out automatically.
 
-To learn more about Next.js, take a look at the following resources:
+### Some of the stuff you can add
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Static image site header: this large header takes up the entire width of the page and is 100vh tall, so it changes to fit your screen.
+- Video site header: alternativly, you can use an embeded youtube video as a site header. You can also add a custom thumbnail so you don't have a blury default thumbnail ruining the crispness of your site.
+- Hero/info Section: Add a picture with a heading and some text. This is usefull for listing some of the main purposes of your business. You can have multiple heroes which are automatically sylized and animated alternating between left and right on desktop. In mobile view It shows the picture then your "blurb".
+- Checklist: You can add multiple checklist, you can use a custom Icon that will be shown before every item, or you can add a custom Icon for every single Item.
+- Image Card Grid: This is great for showing off services and products that are not available online. Price tags are optional.
+- Location information: Embedded google maps with optional heading/plain text address. You can also skip the embedded map and just use the plain text address.
+- Shares section: Add links to social media, email, phone or anything else. Optional heading, label and icon.
+- Contact sheet: Powered by twillio sendgrid. Provide an api key from sendgrid and simply add your email address in site-info.
+- Employee Highlight: Show off your major players in style. Optional titles, phone numbers, and email adress.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Modifying the theme
 
-## Deploy on Vercel
+This project uses Tailwind.css, you can edit the themefile to get lots of different looks. By default this project is using a "Christmas Present" inspired theme. Modifying tailwind themes is beyond the scope of this readme, but you should be able to find lots of resources to do this yourself.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I personally deploy this on a Linux Ubuntu server, with Caddy acting as a webserver reverse proxying to the local host 3000.
+
+It will probably be easier for you to just deploy this to Vercel.
+
+This website is statically generated, meaning that you will need to rebuild and restart the app to see changes on the backend. Right now this is done manually but in the future it will be automated.
+
+To build this app type: "npm run build" and wait for that to finish. Then use "npm run start" to start the app. If you are hosting on linux I recommend using a process manager such as PM2.

@@ -68,7 +68,7 @@ const ImageCardGrid: NextPage<Props> = ({ heading, subheading, cards }) => {
 									)}
 								</div>
 								{item.text ? (
-									<h3 className="text-gray-200">{item.text}</h3>
+									<h3 className="text-gray-200 text-lg">{item.text}</h3>
 								) : (
 									<></>
 								)}

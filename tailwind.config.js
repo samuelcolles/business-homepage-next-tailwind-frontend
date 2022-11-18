@@ -82,12 +82,12 @@ module.exports = {
   plugins: [
     function ({ addUtilities, theme }) {
       const utilities = {
-        '.bg-stripes': {
+        '.bg-crosshatch': {
           backgroundImage:
             'linear-gradient(135deg, var(--stripes-color) 12%, transparent 12%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62%, transparent 62%, transparent 100%), linear-gradient(45deg, var(--stripes-color) 12%, transparent 12%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62%, transparent 62%, transparent 100%)',
           backgroundSize: '40px 40px',
         },
-        '.bg-stripes-reverse': {
+        '.bg-stripes': {
           backgroundImage:
             'linear-gradient(135deg, var(--stripes-color) 12%, transparent 12%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62%, transparent 62%, transparent 100%)',
           backgroundSize: '40px 40px',

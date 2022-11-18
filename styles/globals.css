@@ -26,10 +26,10 @@ body,
   @apply text-tertiary-800 text-5xl font-bold font-satisfy;
 }
 .page-background > :nth-child(odd) {
-  @apply bg-stripes-primary-50 bg-stripes-reverse bg-white;
+  @apply bg-stripes-primary-50 bg-stripes bg-white;
 }
 .page-background > :nth-child(even) {
-  @apply bg-stripes-white bg-stripes bg-secondary-300/20;
+  @apply bg-stripes-white bg-crosshatch bg-secondary-300/20;
 }
 .max-w-screen-common{
   @apply max-w-screen-xl;
