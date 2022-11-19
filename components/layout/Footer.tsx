@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Footer: NextPage<Props> = ({ copyRight, navLinks }) => {
-	return <div className="bg-primary-700 text-white flex justify-center mt-auto">
+	return <div className="bg-primary-800 text-white flex justify-center mt-auto">
 		<div className="mx-4 max-w-screen-common w-full py-6 justify-between flex sm:flex-row flex-col-reverse content-end">
 			{copyRight ? <h1 className="text-lg text-center sm:mt-0 mt-4">{copyRight}</h1> : <></>}
 			<div className="gap-3 flex flex-row justify-center">

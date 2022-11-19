@@ -41,7 +41,7 @@ const Hero: NextPage<Props> = ({
 		transition={{ ease: "easeOut" }}
 	>
 
-		<div className={`w-full flex max-w-screen-common md:mx-0 mx-4 mt-4 md:mt-0 md:gap-4 ${isOdd
+		<div className={`w-full flex max-w-screen-common md:mx-0 mx-4 mt-4 md:mt-0 ${isOdd
 			? "md:flex-row flex-col"
 			: "md:flex-row-reverse flex-col "
 			}`} >
@@ -56,9 +56,8 @@ const Hero: NextPage<Props> = ({
 					}}
 				/>
 				: <></>
-
 			}
-			<div className='my-common flex flex-col container-common w-full'>
+			<div className='my-common flex flex-col container-common w-full md:mx-4'>
 				<h2 className={'sub-heading mb-3 text-center md:text-left'}>
 					{heading}
 				</h2>

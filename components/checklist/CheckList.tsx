@@ -25,7 +25,7 @@ const animation: Variants = {
 const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 	return <motion.div
 		id={"check-list-" + (index + 1).toString()}
-		className="flex flex-col justify-center pb-common divider-common"
+		className="flex flex-col justify-center divider-common"
 		transition={{ staggerChildren: 0.1 }}
 		initial="offScreen"
 		whileInView="onScreen"
@@ -45,20 +45,17 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 					</motion.h1>
 					: <></>
 				}
-				<div className="grid md:grid-cols-3 grid-cols-1  mx-16">
-
-
+				<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  mx-16">
 					{list.map((item, index) =>
 						<motion.div
 							// className={`flex-1 flex flex-row mb-2 ${index % 2 === 1 ? 'text-primary-600' : 'text-secondary-600'}`}
 							className='flex-1 flex flex-row mb-2 text-tertiary-800'
 							key={"listItem" + item.id}
 							variants={animation}
-
 						>
 							{item.icon.data ?
 								<div
-									className={`h-11 w-11 mr-2 ${index % 2 === 1 ? 'bg-primary-700' : 'bg-secondary-700'}`}
+									className={`h-11 w-11 mr-2 flex-shrink-0 ${index % 2 === 1 ? 'bg-primary-700' : 'bg-secondary-700'}`}
 									style={{
 										mask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,
 										WebkitMask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,

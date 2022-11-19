@@ -7,6 +7,7 @@ const nextConfig = {
   },
   env: {
     STRAPI_BACKEND_URL: process.env.STRAPI_BACKEND_URL,
+    PORT: process.env.PORT
   },
 };
 

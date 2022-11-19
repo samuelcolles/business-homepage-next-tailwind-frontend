@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 
 import NavBar from "../components/layout/NavBar";
 import Footer from "../components/layout/Footer";
@@ -18,7 +19,8 @@ interface Props {
 		businessName: string;
 		copyRight: string;
 		contactEmail: string;
-		logo: {};
+		logo: any;
+		favicon: any;
 	};
 	siteHeader: any;
 	shares: any;
@@ -51,21 +53,33 @@ const Home: NextPage<Props> = ({
 	videoHeader
 }) => {
 	const { businessName, copyRight } = siteInfo;
-	return <div className="flex flex-col h-full">
-		<NavBar businessName={businessName} navLinks={navLinks} />
-		<div className="page-background">
-			{siteHeader && siteHeader.image && siteHeader.image.data ? <SiteHeader siteHeader={siteHeader} /> : <></>}
-			{videoHeader && videoHeader.attributes.src && videoHeader.attributes.src.length > 0 ? <VideoHeader src={videoHeader.attributes.src} thumbnail={videoHeader.attributes.thumbnail} /> : <></>}
-			{heroes ? <HeroSection heroes={heroes} /> : <></>}
-			{checkLists ? <CheckListSection checkLists={checkLists} /> : <></>}
-			{imageCardGrids ? <ImageCardSection imageCardGrids={imageCardGrids} /> : <></>}
-			{employees && employees.length > 0 ? <EmployeeSection employees={employees} /> : <></>}
-			{mapLocation ? <MapLocation mapLocation={mapLocation} /> : <></>}
-			{siteInfo.contactEmail ? <ContactForm contactEmail={siteInfo.contactEmail} /> : <></>}
-			{shares && shares.length != 0 ? <SharesSection shares={shares} /> : <></>}
+	return <>
+		<Head>
+			{siteInfo && siteInfo.businessName ?
+				<title>{siteInfo.businessName}</title>
+				: <></>
+			}
+			{siteInfo && siteInfo.favicon ?
+				<link rel="icon" type="image/x-icon" href={process.env.STRAPI_BACKEND_URL + siteInfo.favicon.data.attributes.url} />
+				: <></>
+			}
+		</Head>
+		<div className="flex flex-col h-full">
+			<NavBar businessName={businessName} navLinks={navLinks} logo={siteInfo.logo ? siteInfo.logo : {}} />
+			<div className="page-background">
+				{siteHeader && siteHeader.image && siteHeader.image.data ? <SiteHeader siteHeader={siteHeader} /> : <></>}
+				{videoHeader && videoHeader.attributes.src && videoHeader.attributes.src.length > 0 ? <VideoHeader src={videoHeader.attributes.src} thumbnail={videoHeader.attributes.thumbnail} /> : <></>}
+				{heroes ? <HeroSection heroes={heroes} /> : <></>}
+				{checkLists ? <CheckListSection checkLists={checkLists} /> : <></>}
+				{imageCardGrids ? <ImageCardSection imageCardGrids={imageCardGrids} /> : <></>}
+				{employees && employees.length > 0 ? <EmployeeSection employees={employees} /> : <></>}
+				{mapLocation ? <MapLocation mapLocation={mapLocation} /> : <></>}
+				{siteInfo.contactEmail ? <ContactForm contactEmail={siteInfo.contactEmail} /> : <></>}
+				{shares && shares.length != 0 ? <SharesSection shares={shares} /> : <></>}
+			</div>
+			<Footer navLinks={navLinks} copyRight={copyRight} />
 		</div>
-		<Footer navLinks={navLinks} copyRight={copyRight} />
-	</div>;
+	</>
 };
 
 const getDataItem = async (uri: string) => {
@@ -101,6 +115,7 @@ export const getStaticProps = async () => {
 
 	var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
 	if (siteHeader) siteHeader = siteHeader.attributes;
+	console.log(siteInfo.favicon)
 
 	return {
 		props: {
