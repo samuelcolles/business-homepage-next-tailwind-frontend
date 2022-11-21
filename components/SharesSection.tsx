@@ -55,7 +55,9 @@ const SharesSection: NextPage<Props> = ({ shares }) => {
 							className={`h-16 w-16 bg-tertiary-800`}
 							style={{
 								mask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,
-								maskRepeat: 'no-repeat'
+								maskRepeat: 'no-repeat',
+								WebkitMask: `url(${process.env.STRAPI_BACKEND_URL + item.icon.data.attributes.url})`,
+								WebkitMaskRepeat: 'no-repeat',
 							}}
 						/>
 						<h4 className='font-bold text-lg text-tertiary-900'>
