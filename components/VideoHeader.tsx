@@ -33,9 +33,10 @@ const VideoHeader: NextPage<Props> = ({ src, thumbnail }) => {
 					style={{ backgroundImage: `url(${process.env.STRAPI_BACKEND_URL + thumbnail.data.attributes.url})` }}
 				>
 
-					<div
+					<motion.div
 						className='w-24 h-24 bg-cover bg-center '
 						style={{ backgroundImage: 'url(/YoutubeLogo.svg)' }}
+						whileHover={{ scale: 1.5 }}
 					/>
 
 				</motion.div>

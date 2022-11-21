@@ -45,7 +45,7 @@ const CheckList: NextPage<Props> = ({ heading, icon, list, index }) => {
 					</motion.h1>
 					: <></>
 				}
-				<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  mx-16">
+				<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  sm:ml-16 ml-0">
 					{list.map((item, index) =>
 						<motion.div
 							// className={`flex-1 flex flex-row mb-2 ${index % 2 === 1 ? 'text-primary-600' : 'text-secondary-600'}`}

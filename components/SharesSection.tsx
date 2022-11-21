@@ -24,7 +24,7 @@ const animation: Variants = {
 const SharesSection: NextPage<Props> = ({ shares }) => {
 	return <motion.div
 		id='shares'
-		className='py-common flex justify-center '
+		className='py-common flex justify-center divider-common'
 		transition={{ staggerChildren: 0.1 }}
 		initial="offScreen"
 		whileInView="onScreen"
@@ -41,14 +41,14 @@ const SharesSection: NextPage<Props> = ({ shares }) => {
 				</motion.h1>
 				: <></>
 			}
-			<div className='flex flex-row gap-4 sm:gap-8 justify-center'>
+			<div className='flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center'>
 				{shares.share.map(item =>
 					<motion.a
 						href={item.url}
 						whileHover={{ scale: 1.2 }}
 						whileTap={{ scale: 0.9 }}
 						key={"share" + item.id}
-						className="flex flex-col justify-center items-center text-center"
+						className="flex flex-col justify-center items-center text-center w-full "
 						variants={animation}
 					>
 						<div
