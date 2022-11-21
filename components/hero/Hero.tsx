@@ -32,7 +32,6 @@ const Hero: NextPage<Props> = ({
 }) => {
 	const isOdd = variant === Variant.primary || variant === Variant.tertiary;
 	return <motion.div
-
 		className={`flex divider-common ${isOdd ? "justify-start" : "justify-end"}`}
 		id={`hero-${index + 1}`}
 		initial={isOdd ? { x: 100, opacity: 0 } : { x: -100, opacity: 0 }}
@@ -40,15 +39,13 @@ const Hero: NextPage<Props> = ({
 		viewport={{ once: true, amount: 0.3 }}
 		transition={{ ease: "easeOut" }}
 	>
-
-		<div className={`w-full flex max-w-screen-common md:mx-0 mx-4 mt-4 md:mt-0 ${isOdd
+		<div className={`w-full flex max-w-screen-common md:mx-0 mx-4 mt-8 md:mt-0 ${isOdd
 			? "md:flex-row flex-col"
 			: "md:flex-row-reverse flex-col "
 			}`} >
-
 			{photo && photo.data ?
 				<div
-					className="flex bg-cover bg-center w-full aspect-square "
+					className="flex bg-cover bg-center w-full aspect-square"
 					style={{
 						backgroundImage: `url(${process.env.STRAPI_BACKEND_URL +
 							photo.data.attributes.url

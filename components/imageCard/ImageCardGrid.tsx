@@ -55,12 +55,12 @@ const ImageCardGrid: NextPage<Props> = ({ heading, subheading, cards }) => {
 								/>
 								<div className="flex flex-row justify-between">
 									{item.heading ? (
-										<h2 className="text-white text-3xl">{item.heading}</h2>
+										<h2 className="text-white text-2xl">{item.heading}</h2>
 									) : (
 										<></>
 									)}
 									{item.cost ? (
-										<h3 className="text-white text-bold text-3xl rounded-md">
+										<h3 className="text-white text-bold text-2xl rounded-md ml-2">
 											{item.cost}
 										</h3>
 									) : (
