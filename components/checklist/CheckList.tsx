@@ -2,7 +2,7 @@ import React from "react";
 import { NextPage } from "next";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
+import { Variants } from "framer-motion";
 
 interface Props {
 	heading: string;

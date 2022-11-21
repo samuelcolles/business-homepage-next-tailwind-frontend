@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";

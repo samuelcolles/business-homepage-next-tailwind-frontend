@@ -1,7 +1,7 @@
 import React from "react";
 import type { NextPage } from "next";
 import Link from "next/link";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 interface Props {
 	businessName: string;

@@ -81,7 +81,7 @@ const ImageCarousel: NextPage<Props> = ({ heading, images }) => {
 									whileHover={{ scale: 1.3 }}
 									whileTap={{ scale: 0.9 }}
 								>
-									<BsFillArrowLeftCircleFill className='text-tertiary-800 h-8 w-8' />
+									<BsFillArrowLeftCircleFill className='text-tertiary-50 h-8 w-8' />
 								</motion.button>
 
 								<motion.button
@@ -92,7 +92,7 @@ const ImageCarousel: NextPage<Props> = ({ heading, images }) => {
 									whileHover={{ scale: 1.3 }}
 									whileTap={{ scale: 0.9 }}
 								>
-									<BsFillArrowRightCircleFill className='text-tertiary-800 h-8 w-8' />
+									<BsFillArrowRightCircleFill className='text-tertiary-50 h-8 w-8' />
 								</motion.button>
 								<motion.a
 									className="absolute bottom-2 right-2 sm:bottom-10 sm:right-10 z-50"
@@ -104,7 +104,7 @@ const ImageCarousel: NextPage<Props> = ({ heading, images }) => {
 									whileHover={{ scale: 1.3 }}
 									whileTap={{ scale: 0.9 }}
 								>
-									<SlFrame className='text-tertiary-800 h-8 w-8' />
+									<SlFrame className='text-tertiary-50 h-8 w-8' />
 								</motion.a>
 							</>
 							: <></>

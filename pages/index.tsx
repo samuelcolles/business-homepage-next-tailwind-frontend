@@ -13,7 +13,7 @@ import SharesSection from "../components/SharesSection";
 import MapLocation from "../components/MapLocation";
 import VideoHeader from "../components/VideoHeader";
 import ImageCardSection from "../components/imageCard/ImageCardSection";
-import ImageCarouselSection from "../components/imageCarosel/ImageCarouselSection";
+import ImageCarouselSection from "../components/imageCarousel/ImageCarouselSection";
 
 interface Props {
 	siteInfo: {
