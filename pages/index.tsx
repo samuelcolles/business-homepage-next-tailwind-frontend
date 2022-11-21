@@ -13,6 +13,7 @@ import SharesSection from "../components/SharesSection";
 import MapLocation from "../components/MapLocation";
 import VideoHeader from "../components/VideoHeader";
 import ImageCardSection from "../components/imageCard/ImageCardSection";
+import ImageCarouselSection from "../components/imageCarosel/ImageCarouselSection";
 
 interface Props {
 	siteInfo: {
@@ -38,6 +39,7 @@ interface Props {
 	mapLocation: any;
 	imageCardGrids: any[];
 	videoHeader: any;
+	imageCarousels: any[];
 };
 
 const Home: NextPage<Props> = ({
@@ -50,7 +52,8 @@ const Home: NextPage<Props> = ({
 	employees,
 	navLinks,
 	mapLocation,
-	videoHeader
+	videoHeader,
+	imageCarousels
 }) => {
 	const { businessName, copyRight } = siteInfo;
 	return <>
@@ -76,6 +79,7 @@ const Home: NextPage<Props> = ({
 				{mapLocation ? <MapLocation mapLocation={mapLocation} /> : <></>}
 				{siteInfo.contactEmail ? <ContactForm contactEmail={siteInfo.contactEmail} /> : <></>}
 				{shares && shares.length != 0 ? <SharesSection shares={shares} /> : <></>}
+				{imageCarousels && imageCarousels.length > 0 ? <ImageCarouselSection imageCarousels={imageCarousels} /> : <></>}
 			</div>
 			<Footer navLinks={navLinks} copyRight={copyRight} />
 		</div>
@@ -115,20 +119,22 @@ export const getStaticProps = async () => {
 
 	var siteHeader = await getDataItem("/api/site-header?populate=*&sort=id");
 	if (siteHeader) siteHeader = siteHeader.attributes;
-	console.log(siteInfo.favicon)
+
+	var imageCarousels = await getDataItem("/api/image-carousels?populate=*&sort=id")
 
 	return {
 		props: {
 			siteInfo,
+			navLinks,
 			siteHeader,
-			shares,
+			videoHeader,
 			heroes,
 			checkLists,
-			employees,
-			navLinks,
-			mapLocation,
 			imageCardGrids,
-			videoHeader,
+			employees,
+			shares,
+			mapLocation,
+			imageCarousels
 		},
 	};
 };

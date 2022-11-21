@@ -110,7 +110,6 @@ module.exports = {
           addColor(name, colors[name])
         }
       }
-
       addUtilities(utilities)
     },
   ],
