@@ -32,13 +32,11 @@ const VideoHeader: NextPage<Props> = ({ src, thumbnail }) => {
 					className='w-full aspect-[16/9] bg-cover bg-center flex justify-center items-center cursor-pointer'
 					style={{ backgroundImage: `url(${process.env.STRAPI_BACKEND_URL + thumbnail.data.attributes.url})` }}
 				>
-
 					<motion.div
-						className='w-24 h-24 bg-cover bg-center '
+						className='md:w-24 md:h-24 h-16 w-16 bg-cover bg-center '
 						style={{ backgroundImage: 'url(/YoutubeLogo.svg)' }}
 						whileHover={{ scale: 1.5 }}
 					/>
-
 				</motion.div>
 				: <iframe
 					className='aspect-[16/9] w-full'
